@@ -1,7 +1,6 @@
-function valida(token,login){
+export function valida(token,login){
 
-    if((login != null && login != "") && (token != null && token != "") ){
+    if((login != null && login !== "") && (token != null && token !== "") ){
         return true;
     }else return false;
 }
-export default valida;

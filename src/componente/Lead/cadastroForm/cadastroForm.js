@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { request } from '../../../requisicoes/LeadRequisicoes/Cadastro/requisicaoPost';
+import { request } from '../../../requisicoes/LeadRequisicoes/Cadastro/request';
 
 const CadastroForm = ({ onClose, onSubmit }) =>{
     const [email, setEmail] = useState('');
