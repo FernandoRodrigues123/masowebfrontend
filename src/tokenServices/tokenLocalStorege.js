@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const Context = createContext();
 
@@ -7,7 +7,10 @@ const AuthProvider = ({ children }) => {
     const storedToken = localStorage.getItem('token');
     return storedToken || '';
   });
-
+  const [isADM, setIsADM] = useState(() => {
+    const storedToken = localStorage.getItem('isADM');
+    return storedToken || '';
+  });
   const [login, setLogin] = useState(() => {
     const storedLogin = localStorage.getItem('login');
     return storedLogin || '';
@@ -15,7 +18,7 @@ const AuthProvider = ({ children }) => {
 
   const [autenticado, setAutenticado] = useState(() => {
     const storedAutenticado = localStorage.getItem('autenticado');
-    return storedAutenticado === 'true'; 
+    return storedAutenticado === 'true';
   });
 
   const [tempoDeCriacaoDoToken, setTempoDeCriacaoDoToken] = useState(() => {
@@ -37,22 +40,26 @@ const AuthProvider = ({ children }) => {
 
     if (tokenExpirou()) {
       setToken('');
+      setIsADM(null)
       setLogin('');
       setAutenticado(false);
       setTempoDeCriacaoDoToken(null);
-    }else{
-    localStorage.setItem('token', token);
-    localStorage.setItem('login', login);
-    localStorage.setItem('autenticado', autenticado);
-    localStorage.setItem('tempoDeCriacaoDoToken', tempoDeCriacaoDoToken);}
-  }, [token, login, autenticado, tempoDeCriacaoDoToken]);
+    } else {
+
+      localStorage.setItem('token', token);
+      localStorage.setItem('isADM', isADM)
+      localStorage.setItem('login', login);
+      localStorage.setItem('autenticado', autenticado);
+      localStorage.setItem('tempoDeCriacaoDoToken', tempoDeCriacaoDoToken);
+    }
+  }, [token, isADM, login, autenticado, tempoDeCriacaoDoToken]);
 
   return (
-    <Context.Provider value={{ token, setToken, login, setLogin, autenticado, setAutenticado, tempoDeCriacaoDoToken, setTempoDeCriacaoDoToken }}>
+    <Context.Provider value={{ token, setToken, isADM, setIsADM, login, setLogin, autenticado, setAutenticado, tempoDeCriacaoDoToken, setTempoDeCriacaoDoToken }}>
       {children}
     </Context.Provider>
   );
 }
 
-export {Context, AuthProvider };
+export { Context, AuthProvider };
 

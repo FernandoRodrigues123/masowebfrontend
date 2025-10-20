@@ -1,10 +1,11 @@
 import axios from 'axios';
-export function request(uri, dados,token) {
+export function request(uri, token) {
+ 
 
   let url = process.env.REACT_APP_URL_API + uri;
-  const response = axios.post(url,dados,{
-   headers:{'Authorization': `Bearer ${token}`}
-  });
 
-  return response;
+  return axios.get(url,{
+   headers:{'Authorization': `Bearer ${token}`}
+  } )
 }
+

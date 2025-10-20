@@ -3,7 +3,7 @@ import { request } from '../../../requisicoes/LeadRequisicoes/Login/request';
 import {Context} from '../../../tokenServices/tokenLocalStorege'
 import './style.css';
 
-const EmailPopup = ({ onClose, onSubmit }) => {
+const LoginForm = ({ onClose, onSubmit }) => {
 
 
 
@@ -29,7 +29,8 @@ const EmailPopup = ({ onClose, onSubmit }) => {
       await onSubmit(
         enviarRequest(dados)
           .then(response => {
-            ctx.setToken(response.tokenJWT);
+            ctx.setisADM(false)
+            ctx.setToken(response.data.tokenJWT);
             ctx.setLogin(dados.email)
             ctx.setAutenticado(true);
             ctx.setTempoDeCriacaoDoToken(new Date().getTime());
@@ -76,4 +77,4 @@ function enviarRequest(dados) {
   return request("/lead/login", dados);
 }
 
-export default EmailPopup;
+export default LoginForm;

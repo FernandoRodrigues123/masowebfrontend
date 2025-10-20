@@ -36,6 +36,7 @@ const LoginAdmForm = ({ onClose, onSubmit }) => {
                 enviarRequest(dados)
                     .then(response => {
                         ctx.setToken(response.data.tokenJWT);
+                        ctx.setIsADM(true)
                         ctx.setLogin(dados.login);
                         ctx.setAutenticado(true);
                         ctx.setTempoDeCriacaoDoToken(new Date().getTime());
