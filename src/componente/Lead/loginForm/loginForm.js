@@ -29,7 +29,7 @@ const LoginForm = ({ onClose, onSubmit }) => {
       await onSubmit(
         enviarRequest(dados)
           .then(response => {
-            ctx.setisADM(false)
+            ctx.setIsADM(false)
             ctx.setToken(response.data.tokenJWT);
             ctx.setLogin(dados.email)
             ctx.setAutenticado(true);

@@ -6,6 +6,8 @@ import DeletarForm from "../Lead/deletarForm/deletar";
 import { AuthProvider } from "../../tokenServices/tokenLocalStorege";
 import LoginForm from "../Lead/loginForm/loginForm";
 import CadastroForm from "../Lead/cadastroForm/cadastroForm";
+import AtualizarAdmForm from "../Adm/Atualizar/atualizarForm";
+import DeleteFormAdm from "../Adm/DeleteFormAdm/DeleteFormAdm";
 
 const Forms = () => {
     const [showPopup, setShowPopup] = useState(false);
@@ -14,6 +16,8 @@ const Forms = () => {
     const [show, setShow] = useState(false)
     const [showIt, setShowIt] = useState(false)
     const [mostrarAdmFormCadastro, setMostrarAdmFormCadastro] = useState(false)
+    const [mostrarAdmFormAtualiza, setMostrarAdmFormAtualiza] = useState(false)
+    const [mostrarAdmFormDel, setMostrarAdmFormDel] = useState(false)
     const handleSubmit = async (data) => {
 
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -67,6 +71,21 @@ const Forms = () => {
                 {mostrarAdmFormCadastro && (
                     <CadastroAdmForm
                         onClose={() => setMostrarAdmFormCadastro(false)}
+                        onSubmit={handleSubmit}
+                    />
+                )}
+                <button onClick={() => setMostrarAdmFormAtualiza(true)}>Abrir Formulário adm atualiza</button>
+                {mostrarAdmFormAtualiza && (
+                    <AtualizarAdmForm
+                        onClose={() => setMostrarAdmFormAtualiza(false)}
+                        onSubmit={handleSubmit}
+                    />
+                )}
+
+                <button onClick={() => setMostrarAdmFormDel(true)}>Abrir Formulário adm atualiza</button>
+                {mostrarAdmFormDel && (
+                    <DeleteFormAdm
+                        onClose={() => setMostrarAdmFormDel(false)}
                         onSubmit={handleSubmit}
                     />
                 )}
