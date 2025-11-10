@@ -82,7 +82,7 @@ const Forms = () => {
                     />
                 )}
 
-                <button onClick={() => setMostrarAdmFormDel(true)}>Abrir Formulário adm atualiza</button>
+                <button onClick={() => setMostrarAdmFormDel(true)}>Abrir Formulário adm deletar</button>
                 {mostrarAdmFormDel && (
                     <DeleteFormAdm
                         onClose={() => setMostrarAdmFormDel(false)}
