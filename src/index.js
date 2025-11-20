@@ -11,6 +11,7 @@ import BuscaProdutos from './componente/Produto/BuscaProdutos/BuscaProdutos';
 import BuscaPorId from './componente/Produto/BuscaPorId/BuscaPorId';
 import ProdutoAtualizarForm from './componente/Produto/AtualizarProduto/ProdutoAtualizaForm';
 import DeletarProdutoForm from './componente/Produto/DeletarProduto/DeletarProdutoForm';
+import Favoritos from './componente/Favoritos/Favoritos/Favoritos';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
   { path: "/produtos", element: <BuscaProdutos /> },
   { path: "/produto/:id", element: <BuscaPorId /> },
   { path: "/produto/atualizar/:id", element: <ProdutoAtualizarForm /> },
-  { path: "/produto/deletar/:id", element: <DeletarProdutoForm /> }
+  { path: "/produto/deletar/:id", element: <DeletarProdutoForm /> },
+  { path: "/favoritos", element: <Favoritos /> }
 
 
 ]);
