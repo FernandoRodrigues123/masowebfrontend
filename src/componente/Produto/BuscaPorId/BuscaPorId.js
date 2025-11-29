@@ -108,6 +108,23 @@ const BuscaPorId = () => {
         </button>
         
       )}
+      {isADM === "true" && (
+        <button
+          style={{
+            marginTop: "20px",
+            backgroundColor: "#007bff",
+            color: "white",
+            border: "none",
+            padding: "10px 15px",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate(`/leadsInteressados/${produto.id}`)}
+        >
+          lista leads interresados no produto
+        </button>
+        
+      )}
     </div>
   );
 };
